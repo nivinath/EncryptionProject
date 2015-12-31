@@ -28,7 +28,7 @@ public class Encryptor
          //encryting is jumbling it up,so dont jumble it up again
         {
            System.out.println("You can't do this. Sorry :/");
-           return "error";
+           throw new InvalidFormatException("Message already encrypted");
         }
         //returning returns to the computer
         //printing shows it to the user
@@ -59,7 +59,7 @@ public class Encryptor
          //encryting is jumbling it up,so dont jumble it up again
         {
            System.out.println("You can't do this. Sorry :/");
-           return "error";
+           throw new InvalidFormatException("Message already decrypted");
         }
         
         String unjumbled = "";
