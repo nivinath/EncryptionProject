@@ -28,15 +28,15 @@ public class Encryptor
          //encryting is jumbling it up,so dont jumble it up again
         {
            System.out.println("You can't do this. Sorry :/");
-           throw new InvalidFormatException("Message already encrypted");
+           return "error";
+           //throw new InvalidFormatException("Message already encrypted");
         }
         //returning returns to the computer
         //printing shows it to the user
         String jumbled = "";
         String text = msg.getMessage();
-      
-        String cipher = key.getCipher();
-      
+        //String cipher = key.getCipher();
+        String cipher = "bdfgiklmpqrstuvwxyzjohncea";
         
         for(int i = 0; i < text.length(); i++){
             //first, creates the counter value and sets it to the initial value
@@ -44,7 +44,12 @@ public class Encryptor
             //third tells it what to do after each loop
            String letter = text.substring(i,i+1);
            int number = letter.compareTo("a");
-           jumbled += cipher.substring(number,number + 1);
+           
+           if(number < 0 || number > 25){
+               jumbled += " ";
+            } else {
+                jumbled += cipher.substring(number,number + 1);
+            }
         }
         
         return jumbled;
@@ -59,12 +64,14 @@ public class Encryptor
          //encryting is jumbling it up,so dont jumble it up again
         {
            System.out.println("You can't do this. Sorry :/");
-           throw new InvalidFormatException("Message already decrypted");
+           return "error";
+           //throw new InvalidFormatException("Message already decrypted");
         }
         
         String unjumbled = "";
         String text = msg.getMessage();
-        String cipher = key.getCipher();
+        //String cipher = key.getCipher();
+        String cipher = "bdfgiklmpqrstuvwxyzjohncea";
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         
         for(int i = 0; i < text.length(); i++){
@@ -74,9 +81,25 @@ public class Encryptor
            String letter = text.substring(i,i+1);
            int number = cipher.indexOf(letter);
            //searching in cipher, searching for letter
-           unjumbled += alphabet.substring(number,number + 1);
+                      
+            if(number < 0 || number > 25){
+               unjumbled += " ";
+            } else {
+                unjumbled += alphabet.substring(number,number + 1);
+            }
         }
         
         return unjumbled;
     }
+    
+    public void changeMessage(Message m) 
+    {
+        msg = m;
+    }
+    
+    public void changeKey (Key k)
+    {
+        key = k;
+    }
 }
+
