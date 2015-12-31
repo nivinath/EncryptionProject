@@ -23,7 +23,7 @@ public class Encryptor
     {
         
         //temporary variable
-        if (false)//msg.getEncrypt())
+        if (msg.getEncrypt())
          //the method from the Message class thats a "get" method
          //encryting is jumbling it up,so dont jumble it up again
         {
@@ -33,10 +33,10 @@ public class Encryptor
         //returning returns to the computer
         //printing shows it to the user
         String jumbled = "";
-        //String text = msg.getMessage();
-        String text = "width";
-        //String cipher = key.getCipher();
-        String cipher = "bdfgiklmpqrstuvwxyzjohncea";
+        String text = msg.getMessage();
+      
+        String cipher = key.getCipher();
+      
         
         for(int i = 0; i < text.length(); i++){
             //first, creates the counter value and sets it to the initial value
@@ -54,7 +54,7 @@ public class Encryptor
     
     public String decrypt()
     {
-         if (!true)//msg.getEncrypt())
+         if (!msg.getEncrypt())
          //the method from the Message class thats a "get" method
          //encryting is jumbling it up,so dont jumble it up again
         {
@@ -63,10 +63,8 @@ public class Encryptor
         }
         
         String unjumbled = "";
-        //String text = msg.getMessage();
-        String text = "npgjm";
-        //String cipher = key.getCipher();
-        String cipher = "bdfgiklmpqrstuvwxyzjohncea";
+        String text = msg.getMessage();
+        String cipher = key.getCipher();
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         
         for(int i = 0; i < text.length(); i++){
