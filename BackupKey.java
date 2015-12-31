@@ -1,23 +1,38 @@
-public class BackupKey
+public class BackupCipher
 {
-	private String alphabet;
-	private int shift;
 	private String cipher;
+	private String pAlphabet;
 	
-	public BackupKey(String nAlphabet, int nShift)
+	public BackupCipher(String alphabet, int shift)
 	{
-		alphabet = nAlphabet;
-		shift = nShift;
+		cipher = this.createKey(alphabet, shift);
+		pAlphabet = alphabet;
 	}
 	
-	public String createCipher()
+    private String createKey(String alphabet, int shift)
 	{
-			String before = "";
-			String after = "";
-			before = alphabet.substring(0, shift);
-			after = alphabet.substring(shift);
-			cipher = after + before;
-			return cipher;
+		String before = "";
+		String after = "";
+		before = alphabet.substring(0, shift);
+		after = alphabet.substring(shift);
+		cipher = after + before;
+		return cipher;
 	}
+    
+    public String getConversion(String c, boolean encrypt) throws InvalidFormatException
+    {
+    	if (cipher.indexOf(c) < 0 || pAlphabet.indexOf(c) < 0)
+    	{
+    		throw new InvalidFormatException("Character not in alphabet");
+    	}
+    	else if (encrypt)
+	{
+		return pAlphabet.substring(cipher.indexOf(c), cipher.indexOf(c) + 1);
+	}
+	else
+	{
+		return cipher.substring(pAlphabet.indexOf(c), pAlphabet.indexOf(c) + 1);
+	}
+    }
 
 }
