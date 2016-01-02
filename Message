@@ -1,0 +1,16 @@
+public class Message
+{
+    private String Message;
+    private boolean encrypted;
+ 
+    public Message(String msg, boolean encrypt)
+    {
+        Message = msg;
+        encrypted = encrypt;
+    }
+
+    public boolean returnEncrypt()
+    {
+        return encrypted;
+    }
+}
